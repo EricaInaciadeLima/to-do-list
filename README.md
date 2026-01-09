@@ -41,8 +41,8 @@ Campos definidos:
 - **titulo**: título da tarefa (obrigatório)
 - **descricao**: descrição detalhada da tarefa (opcional)
 - **status**: status atual da tarefa
-- **criacao_em**: data e hora de criação da tarefa
-- **atualizacao_em**: data e hora da última atualização da tarefa
+- **criado_em**: data e hora de criação da tarefa
+- **atualizado_em **: data e hora da última atualização da tarefa
 
 ### ⚙️ Decisões de Modelagem
 - O campo **status** será armazenado como `VARCHAR`
@@ -73,8 +73,8 @@ A mudança de status faz parte das regras de negócio.
 ## 📐 Regras de Negócio
 - ✔️ Status é obrigatório na criação
 - 🚫 Usuário não informa datas
-- ⏱️ Sistema registra `criacao_em` e `atualizacao_em`
-- 🔄 Toda atualização altera `atualizacao_em`
+- ⏱️ Sistema registra `criado_em` e `atualizado_em `
+- 🔄 Toda atualização altera `atualizado_em `
 
 ---
 
