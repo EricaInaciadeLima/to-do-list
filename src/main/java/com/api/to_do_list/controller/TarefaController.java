@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/tarefas")
 public class TarefaController {
     //Injenção de dependência-> permitir que a camada de controle se comunique com a camada de serviço
