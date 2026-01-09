@@ -1,133 +1,113 @@
-# to-do-list
-# Discovery – Projeto To-Do List
+# To-Do List API
 
-## 1. Objetivo do Projeto
+API RESTful para gerenciamento de tarefas (To-Do List), desenvolvida com **Spring Boot**, seguindo boas práticas de mercado como discovery técnico, modelagem de dados, separação de responsabilidades e organização por ambientes.
 
-O objetivo deste projeto é desenvolver uma **API RESTful de lista de tarefas (To-Do List)**, seguindo boas práticas utilizadas no mercado de tecnologia. O foco está em organização de código, separação de responsabilidades, versionamento com Git, definição de ambientes e modelagem correta de dados.
-
-Este projeto é voltado para estudo e simulação de um fluxo real de desenvolvimento backend.
+Este projeto tem como objetivo **estudo e simulação de um fluxo real de desenvolvimento backend**.
 
 ---
 
-## 2. Escopo Funcional
-
-A aplicação permitirá que um usuário:
-
-* Cadastre tarefas
-* Liste tarefas
-* Atualize o status de uma tarefa
-* Exclua tarefas
-
-Não haverá frontend. A API será testada por meio de clientes HTTP como **Insomnia** ou **Bruno**.
-
----
-
-## 3. Modelagem de Dados (Banco de Dados)
-
-Após o processo de discovery, foi definido que o projeto utilizará **apenas uma entidade principal**, representando as tarefas.
-
-### 3.1 Entidade: Task (Tarefa)
-
-Campos definidos:
-
-* **id**: identificador único da tarefa
-* **title**: título da tarefa (obrigatório)
-* **description**: descrição detalhada da tarefa (opcional)
-* **status**: status atual da tarefa
-* **created_at**: data e hora de criação da tarefa
-* **updated_at**: data e hora da última atualização da tarefa
-
-### 3.2 Decisões de Modelagem
-
-* O campo **status** será armazenado como `VARCHAR` no banco de dados
-* As regras de valores permitidos para status serão controladas no código por meio de um `enum`
-* As datas de criação e atualização não serão informadas pelo usuário, sendo controladas automaticamente pelo sistema
-
-Essa abordagem garante flexibilidade, segurança e aderência às boas práticas de mercado.
+## 📌 Sumário
+- [Objetivo do Projeto](#objetivo-do-projeto)
+- [Escopo Funcional](#escopo-funcional)
+- [Discovery Técnico](#discovery-técnico)
+- [Modelagem de Dados](#modelagem-de-dados)
+- [Status da Tarefa](#status-da-tarefa)
+- [Métodos HTTP e Endpoints](#métodos-http-e-endpoints)
+- [Regras de Negócio](#regras-de-negócio)
+- [Ambientes](#ambientes)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
 
 ---
 
-## 4. Status da Tarefa
-
-Os possíveis status da tarefa serão definidos no código da aplicação, podendo incluir:
-
-* PENDING (pendente)
-* IN_PROGRESS (em andamento)
-* DONE (concluída)
-
-A mudança de status faz parte das regras de negócio e será tratada na camada de serviço.
+## 🎯 Objetivo do Projeto
+Desenvolver uma **API RESTful de lista de tarefas**, aplicando conceitos fundamentais de backend como:
+- Versionamento com Git
+- Organização de ambientes
+- Modelagem correta de banco de dados
+- Regras de negócio bem definidas
+- APIs REST
 
 ---
 
-## 5. Métodos HTTP e Endpoints
+## 📋 Escopo Funcional
+A aplicação permite que um usuário:
+- Cadastre tarefas
+- Liste tarefas
+- Atualize o status de uma tarefa
+- Exclua tarefas
 
-### 5.1 Métodos Utilizados
-
-* **GET**: listar tarefas
-* **POST**: criar uma nova tarefa
-* **PUT**: atualizar uma tarefa existente (principalmente status)
-* **DELETE**: excluir uma tarefa
-
-### 5.2 Funcionalidades dos Endpoints
-
-#### GET
-
-* Listar todas as tarefas
-* Filtrar tarefas por status (pendentes, em andamento, concluídas)
-
-#### POST
-
-* Criar uma nova tarefa
-* Campos obrigatórios: título
-* Campos opcionais: descrição
-
-#### PUT
-
-* Atualizar informações de uma tarefa
-* Atualizar status
-* Registrar automaticamente a data e hora da última atualização
-
-#### DELETE
-
-* Excluir uma tarefa pelo identificador
+Não há frontend. A API é testada utilizando clientes HTTP como **Insomnia** ou **Bruno**.
 
 ---
 
-## 6. Regras de Negócio
+## 🔍 Discovery Técnico
+Antes da implementação, foi realizado um **processo de discovery**, onde foram definidas:
+- Entidades do sistema
+- Estrutura do banco de dados
+- Métodos HTTP
+- Regras de negócio
+- Estratégia de ambientes
 
-* Ao criar uma tarefa, o **status é obrigatório** e deve ser informado pelo cliente no momento do cadastro
-* O cliente informa apenas dados de negócio: título, descrição (opcional) e status
-* No momento da criação da tarefa, o sistema registra automaticamente a data e hora em `created_at`
-* Toda atualização realizada em uma tarefa gera automaticamente um novo registro de data e hora em `updated_at`
-* O usuário não informa manualmente datas de criação ou atualização
-* O status da tarefa define seu estado no fluxo
-* A atualização de uma tarefa sempre gera uma nova data de atualização
-* O usuário não informa datas de criação ou atualização
-* O sistema registra automaticamente `created_at` e `updated_at`
-* O status da tarefa define seu estado no fluxo
-* A atualização de uma tarefa sempre gera uma nova data de atualização
+📄 Para mais detalhes, consulte o documento:
+➡️ **[Discovery – Projeto To-Do List](./DISCOVERY.md)**
 
 ---
 
-## 7. Ambientes
+## 🗄️ Modelagem de Dados
+O sistema utiliza **uma entidade principal**, representando as tarefas.
 
-O projeto será estruturado para suportar múltiplos ambientes:
+### Entidade: Task
+Campos principais:
+- `id`
+- `title`
+- `description`
+- `status`
+- `created_at`
+- `updated_at`
 
-* **local**: desenvolvimento local
-* **dev**: ambiente de desenvolvimento
-* **hom**: homologação
-* **prod**: produção
-
-Cada ambiente possui seu próprio arquivo de configuração (`application-{profile}.properties`).
+As datas de criação e atualização são **metadados técnicos**, controlados automaticamente pelo sistema.
 
 ---
 
-## 8. Considerações Finais
+## 🔄 Status da Tarefa
+Os status são definidos no código por meio de um `enum`, como:
+- `PENDING`
+- `IN_PROGRESS`
+- `DONE`
 
-Este documento representa a fase de **discovery** do projeto, onde foram definidas:
+O banco de dados armazena o status como `VARCHAR`, garantindo flexibilidade futura.
 
-* As responsabilidades do sistema
-* A modelagem do banco de dados
-* Os métodos HTTP utilizados
-* As regras de negócio principais
+---
 
+## 🌐 Métodos HTTP e Endpoints
+A API utiliza os seguintes métodos:
+
+- **GET** → Listar tarefas (com filtro por status)
+- **POST** → Criar tarefa
+- **PUT** → Atualizar tarefa / status
+- **DELETE** → Excluir tarefa
+
+As regras completas de cada endpoint estão descritas no documento de discovery.
+
+---
+
+## 📐 Regras de Negócio
+- O status é obrigatório na criação da tarefa
+- O cliente informa apenas dados de negócio
+- Datas de criação e atualização são geradas automaticamente
+- Toda atualização altera o campo `updated_at`
+- O sistema garante consistência dos dados
+
+---
+
+## 🌎 Ambientes
+O projeto suporta múltiplos ambientes:
+
+- `local`
+- `dev`
+- `hom`
+- `prod`
+
+Cada ambiente possui seu próprio arquivo:
+```text
+application-{profile}.properties
