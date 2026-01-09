@@ -38,12 +38,15 @@ public class TarefaController {
         return ResponseEntity.ok(tarefas);
     }
 
-    @PutMapping ("/{id}")
-    public ResponseEntity<String> atualizarTarefa (@PathVariable Long id, @Valid Tarefa tarefaAtualizada) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Tarefa> atualizarTarefa(
+            @PathVariable Long id,
+            @Valid @RequestBody Tarefa tarefaAtualizada) {
 
-        Tarefa tarefa = tarefaService.atualizarTarefa(tarefa);
+        Tarefa tarefa = tarefaService.atualizarTarefa(id, tarefaAtualizada);
         return ResponseEntity.ok(tarefa);
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarTarefa(@PathVariable Long id) {
