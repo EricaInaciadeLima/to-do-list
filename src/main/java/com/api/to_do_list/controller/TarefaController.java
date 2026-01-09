@@ -21,7 +21,7 @@ public class TarefaController {
         this.tarefaService = tarefaService;
     }
 
-    @PostMapping("/casdastrar")
+    @PostMapping("/cadastrar")
     public ResponseEntity<String> cadastrar (@RequestBody Tarefa tarefa) {
         tarefaService.salvar(tarefa);
         return ResponseEntity.status(HttpStatus.CREATED).body("Tarefa cadastrada com sucesso!");
