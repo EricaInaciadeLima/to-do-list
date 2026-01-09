@@ -9,7 +9,7 @@ Este projeto tem como objetivo **estudo e simulação de um fluxo real de desenv
 ## 📌 Sumário
 - [Objetivo do Projeto](#objetivo-do-projeto)
 - [Escopo Funcional](#escopo-funcional)
-- [Discovery Técnico](#discovery-técnico)
+- [Discovery Técnico](#discovery-tecnico)
 - [Modelagem de Dados](#modelagem-de-dados)
 - [Status da Tarefa](#status-da-tarefa)
 - [Métodos HTTP e Endpoints](#métodos-http-e-endpoints)
