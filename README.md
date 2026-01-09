@@ -73,8 +73,8 @@ A mudança de status faz parte das regras de negócio.
 ## 📐 Regras de Negócio
 - ✔️ Status é obrigatório na criação
 - 🚫 Usuário não informa datas
-- ⏱️ Sistema registra `created_at` e `updated_at`
-- 🔄 Toda atualização altera `updated_at`
+- ⏱️ Sistema registra `criacao_em` e `atualizacao_em`
+- 🔄 Toda atualização altera `atualizacao_em`
 
 ---
 
